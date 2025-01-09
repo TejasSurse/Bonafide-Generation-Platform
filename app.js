@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 const path = require("path");
 const mysql = require("mysql2");
 app.set("view engine", "ejs");
-app.set("Views", path.join(__dirname, "/Views"));
+app.set("views", path.join(__dirname, "/Views"));
+
 
 if(process.env.NODE_ENV != "production"){
     require("dotenv").config();
