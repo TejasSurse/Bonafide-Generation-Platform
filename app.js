@@ -19,7 +19,10 @@ const conn = mysql.createConnection({
     database: process.env.DB, // Your database name
     ssl: {
          rejectUnauthorized: false
-    }
+    },
+    connectionLimit: 10, // Adjust based on your needs
+    waitForConnections: true,
+    queueLimit: 0
 });
 
 if(conn){
