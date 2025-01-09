@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bonafide Certificate</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .animated-tag {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .animated-tag:hover {
+      background-color: #3e8e41;
+      transform: scale(1.1);
+    }
+    .certificate-container {
+      width: 210mm; /* A4 width */
+      height: 297mm; /* A4 height */
+      margin: 20px auto;
+      padding: 20mm;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header img.logo {
+      width: 120px; /* Increased width */
+      height: auto;
+    }
+    .header-text {
+      text-align: center;
+    }
+    .header-text h1, 
+    .header-text h2, 
+    .header-text h4 {
+      margin: 5px 0;
+    }
+    .header-text h1 {
+      font-size: 28px; /* Increased font size */
+    }
+    .header-text h2 {
+      font-size: 22px; /* Increased font size */
+    }
+    .header-text h4 {
+      font-size: 18px; /* Increased font size */
+    }
+    .header-text p {
+      font-size: 14px; /* Increased font size */
+      margin: 5px 0;
+    }
+    .border {
+      border-top: 2px solid black;
+      margin: 20px 0;
+    }
+    .certificate-body {
+      text-align: justify;
+      font-size: 16px; /* Increased font size */
+    }
+    .certificate-body .ref-date {
+      display: flex;
+      justify-content: space-between;
+    }
+    .certificate-body .ref-date p {
+      font-size: 14px; /* Increased font size */
+    }
+    .certificate-body .title {
+      text-align: center;
+      text-transform: uppercase;
+      margin: 30px 0;
+      font-size: 22px; /* Increased font size */
+    }
+    .certificate-body .para {
+      margin-top: 20px;
+      line-height: 1.8; /* Slightly increased line height */
+    }
+    .certificate-body .signature {
+      text-align: right;
+      margin-top: 50px;
+      font-size: 16px; /* Increased font size */
+    }
+    /* Print Styles */
+   /* Print Styles */
+@media print {
+  body {
+    background: white;
+    margin: 0;
+    padding: 0;
+  }
+
+  .certificate-container {
+    box-shadow: none;
+    margin: 0;
+    padding: 20mm;
+    width: 210mm; /* A4 width */
+    height: 297mm; /* A4 height */
+    overflow: hidden;
+  }
+
+  /* Hide the download button during print */
+  button {
+    display: none;
+  }
+
+  /* Remove any unwanted elements like footer and URL */
+  @page {
+    size: A4;
+    margin: 0; /* Removes margins on the page */
+  }
+
+  /* Ensure that only the content is printed, hide browser-specific details */
+  * {
+    -webkit-print-color-adjust: exact; /* Ensures that colors are rendered exactly as in the web page */
+  }
+
+  /* Hide elements that might appear in print */
+  body {
+    visibility: hidden; /* Hides the entire body first */
+  }
+
+  .certificate-container {
+    visibility: visible; /* Makes the certificate container visible for printing */
+  }
+
+  .certificate-container,
+  .certificate-container * {
+    visibility: visible; /* Ensures that all elements inside certificate container are visible */
+  }
+
+  /* Hide all unwanted page-specific info like timestamp or localhost */
+  .certificate-container,
+  .certificate-container * {
+    visibility: visible;
+  }
+}
+
+  </style>
+</head>
+<body>
+  
+  <button onclick="window.print()" class="animated-tag">Download as PDF</button>
+
+  <div class="certificate-container">
+    <div class="header">
+      <img src="https://gyaanarth.com/wp-content/uploads/2022/06/CSM_LOGO-1024x853.jpg" alt="College Logo" class="logo">
+      <div class="header-text">
+        <h2>CSMSS</h2>
+        <h4>CHHATRAPATI SHAHU MAHARAJ SHIKSHAN SANSTHA's</h4>
+        <h1>CHH. SHAHU COLLEGE OF ENGINEERING</h1>
+        <p>
+          Approved by AICTE New Delhi, DTE (Govt. of Maharashtra) and affiliated to Dr. B.A.T. University, Lonere<br>
+          Kanchanwadi, Paithan Road, Chhatrapati Sambhajinagar 431 002 (M.S)<br>
+          Ph. No.: (0240) 2379248, 2646463 Fax : (0240) 2379015<br>
+          Email : <a href="mailto:shahuengg@gmail.com">shahuengg@gmail.com</a>,
+                  <a href="mailto:principal@csmssengg.org">principal@csmssengg.org</a><br>
+          Website : <a href="http://www.csmssengg.org">www.csmssengg.org</a>
+        </p>
+      </div>
+      <img src="https://studybharat.com/wp-content/uploads/2016/06/CSMSS-Chh.-Shahu-College-of-Engineering-Aurangabad.jpg" alt="College Logo" class="logo">
+    </div>
+
+    <div class="border"></div>
+
+    <div class="certificate-body">
+      <div class="ref-date">
+        <p>Ref: CSCOE/BONAFIDE/2024</p>
+        <p>Date: <%= data.Date %></p>
+      </div>
+      <h2 class="title">Bonafide Certificate</h2>
+      <div class="para">
+        <p>This is to certify that <strong><%= data.name %></strong> is a bonafide student of this college studying in B.Tech <%= data.class %> (<%= data.branch %>) Engineering during the academic year 2024-2025. <%= data.gender === 'M' ? 'His' : 'Her' %> date of birth as per college register is <%= data.dob %>.</p>
+        <p><%= data.gender === 'M' ? 'His' : 'Her' %> conduct and progress is satisfactory to the best of my knowledge. <%= data.gender === 'M' ? 'He' : 'She' %> bears a good moral character.</p>
+      </div>
+      <div class="signature" style="margin-top: 10rem;">
+        <p>Principal</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
